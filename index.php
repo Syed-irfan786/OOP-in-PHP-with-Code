@@ -1,6 +1,7 @@
 <?php
-include dirname(__FILE__) . '/oop/myclass.php';
-include dirname(__FILE__) . '/oop/incapsulation.php';
+include 'includes/autoloader.inc.php';
+// include dirname(__FILE__) . '/oop/myclass.php';
+// include dirname(__FILE__) . '/oop/incapsulation.php';
 ?>
 
 <!DOCTYPE html>
@@ -38,11 +39,21 @@ include dirname(__FILE__) . '/oop/incapsulation.php';
 
 
     //use of Statid keyword and method
-    $obj = new Human('irfan', 23, 'male');
-    $obj1 = new Human('irfannn', 23, 'male');
-    Human :: setCc(4);
-    echo Human::$Count ;
+    // $obj = new Human('irfan', 23, 'male');
+    // $obj1 = new Human('irfannn', 23, 'male');
+    // Human :: setCc(4);
+    // echo Human::$Count ;
 
+
+
+    //Interface in php
+    $obj = new aa();
+
+    $obj->hello("David");
+    echo "<br>";
+    $obj->hi('David');
+    echo "<br>";
+    $obj->have('Car');
 
 
 
