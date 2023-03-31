@@ -43,4 +43,13 @@ class Test extends Dbh{
         $stmt->execute();
         echo "updated successfully" ;
     }
+
+    public function delete($firstName, $lastName)
+    {
+        $sql = "DELETE FROM users WHERE fname='$firstName' AND lname='$lastName'";
+        $stmt = $this->connect()->query($sql);
+        $stmt->execute();
+        echo "Deleted Successfully <br>";
+
+    }
 }

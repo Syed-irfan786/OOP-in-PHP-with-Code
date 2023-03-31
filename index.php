@@ -12,13 +12,13 @@ include 'includes/autoloader.inc.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-  /* form {
+  form {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-  } */
+    height: 50vh;
+  }
 </style>
 </head>
 <body>
@@ -31,11 +31,14 @@ include 'includes/autoloader.inc.php';
   <input value="add" name="sub" type="submit" style="background-color: #4CAF50; color: white; padding: 5px 10px; border: none; border-radius: 4px; cursor: pointer;">
   <input value="search" name="sub" type="submit" style="background-color: #008CBA; color: white; padding: 5px 10px; border: none; border-radius: 4px; cursor: pointer;">
   <input value="update" name="sub" type="submit" style="background-color: #008CBA; color: white; padding: 5px 10px; border: none; border-radius: 4px; cursor: pointer;">
+  <input value="delete" name="sub" type="submit" style="background-color: #008CBA; color: white; padding: 5px 10px; border: none; border-radius: 4px; cursor: pointer;">
+  <input value="show" name="sub" type="submit" style="background-color: #008CBA; color: white; padding: 5px 10px; border: none; border-radius: 4px; cursor: pointer;">
 </form>
 
 
 
     <?php 
+    $sub = '';
 
     
 
@@ -92,8 +95,8 @@ include 'includes/autoloader.inc.php';
     $object = new Test();
     // $object->getUsers();
 
-
-    $sub = $_POST['sub'];
+    if(isset($_POST['sub'])){
+      $sub = $_POST['sub'];
 
     if($sub=="add"){
         $firstName = $_POST['fname'];
@@ -114,12 +117,23 @@ include 'includes/autoloader.inc.php';
         $lastName = $_POST['lname'];
         $age = $_POST['age'];
         $object->update($firstName,$lastName, $age);
+    }
+    elseif($sub=="delete"){
+      $firstName  =$_POST['fname'];
+      $lastName = $_POST['lname'];
+
+      $object->delete($firstName, $lastName);
+    }
+    elseif($sub=="show"){
+      $object->getUsers();
+    }
+
 
     }
-    else{
-        echo "Main page";
-    }
-    $sub = '';
+
+
+    
+
 
 
 
